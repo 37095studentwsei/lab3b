@@ -1,5 +1,4 @@
 package pl.lublin.wsei.java.cwiczenia.test;
-        import java.security.KeyPairGenerator;
         import java.sql.Connection;
         import java.sql.DriverManager;
         import java.sql.*;
@@ -53,6 +52,14 @@ public class MyDB {
     public void setPassword (String password){
         this.password = password;
     }
-
+    public void closeConnection(){
+        if (conn !=null)
+            try{
+                conn.close();
+            } catch (SQLException e){
+                System.out.println("Błąd przy zamykaniu łącza bazodanowego"+e.getMessage());
+            }
+        conn=null;
+    }
 
 }
